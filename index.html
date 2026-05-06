@@ -51,10 +51,14 @@
         else{
             display.innerHTML = "Złe wartości! tylko liczby dodtanie i całkowite"
         }
-        display.innerHTML = drawTable(n1,n2,10);
-        
-
-        
+        display.innerHTML = drawTable(n1,n2);
+            const cells = document.querySelectorAll('td');
+            cells.forEach(cell => {
+            cell.addEventListener('click', () =>{
+            console.log("Row index: " + cell.closest('tr').rowIndex + " | Column index: " + cell.cellIndex)
+            display.innerHTML=drawTable(n1,n2,cell.closest('tr').rowIndex,cell.cellIndex)
+            console.log("TEST")});
+        })
     }
 
     function checkNumber(n){
@@ -67,24 +71,31 @@
         return true
     }
 
-    function drawTable(x,y,n){
+    function drawTable(x,y,x_click,y_click){
         var HTML = "<table border=1 width=100%><tr>";
             for (j=1;j<y+1;j++){
                 HTML+="<tr>"
             for (i=1;i<x+1;i++){
+                if (i-1 == y_click){
+                    HTML +="<td align=center id='yellow'>"+i*j+"</td>"
+                    console.log("CLICK")
+                }else{ 
+                if (j == x_click){
+                    HTML +="<td align=center id='yellow'>"+i*j+"</td>"
+                    console.log("CLICK")
+                }
+                else{
                 HTML +="<td align=center>"+i*j+"</td>"
+                }
+            }
             }
             HTML+="</tr>"
         }
         HTML += "</tr></table>";
         return HTML
     }
-    var HTML = "<table border=1 width=100%><tr>";
-    for(j=1;j<=10;j++)
-    {
-        HTML += "<td align=center>"+String.fromCharCode(j+64)+"</td>";
-    }
-    HTML += "</tr></table>";
-    display.innerHTML = HTML;
+
+
+
 
 </script>
