@@ -1,0 +1,28 @@
+
+#sidebar {
+  border: solid;
+  display: block;
+  width: 20%;
+  height: 100%;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+}
+body {
+  display: flex;
+  height: 100vh;
+}
+#mainbody {
+  border: solid;
+  display: inline-flex;
+  width: 60%;
+  float: right;
+  margin: 10px;
+  height: 100%;
+}
+
+#inputy {
+  justify-content: center;
+  margin: 2px;
+  display: grid;
+}
