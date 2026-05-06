@@ -20,7 +20,7 @@
         </div>
         <br>
         <div id="inputy">
-            <label for="liczba2">Liczba 1:</label>
+            <label for="liczba2">Liczba 2:</label>
             <input type="number" id="liczba2">
         </div>
         <div id="inputy">
@@ -44,8 +44,47 @@
     function multi(){
         n1 = parseInt(number1.value)
         n2 = parseInt(number2.value)
-        n1 = n1*n2
-        display.innerHTML = n1
+        if (checkNumber(n1) && checkNumber(n2)){
+            n3 = n1*n2
+            display.innerHTML = "Wynik mnożenia "+n1+" i "+n2+" to "+n3
+        }
+        else{
+            display.innerHTML = "Złe wartości! tylko liczby dodtanie i całkowite"
+        }
+        display.innerHTML = drawTable(n1,n2,10);
+        
+
+        
     }
+
+    function checkNumber(n){
+        if (n <=0){
+            return false
+        }
+        if (n%1 != 0){
+            return false
+        }
+        return true
+    }
+
+    function drawTable(x,y,n){
+        var HTML = "<table border=1 width=100%><tr>";
+            for (j=1;j<y+1;j++){
+                HTML+="<tr>"
+            for (i=1;i<x+1;i++){
+                HTML +="<td align=center>"+i*j+"</td>"
+            }
+            HTML+="</tr>"
+        }
+        HTML += "</tr></table>";
+        return HTML
+    }
+    var HTML = "<table border=1 width=100%><tr>";
+    for(j=1;j<=10;j++)
+    {
+        HTML += "<td align=center>"+String.fromCharCode(j+64)+"</td>";
+    }
+    HTML += "</tr></table>";
+    display.innerHTML = HTML;
 
 </script>
